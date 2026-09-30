@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BBC News · Text EDA | CO5177 - Nguyen Thi Hong Hanh</title>
+    <title>BBC News · Text EDA | CO5177 - Nguyen Thi Hong Hanh (2470316)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -17,7 +17,6 @@
         --orange-dark: #a94008;
         --yellow: #efae00;
         --mint: #a9cfc1;
-        --mint-light: #d8e9e2;
         --line: rgba(23, 63, 76, 0.15);
         --muted: #61777d;
         --mono: "DM Mono", monospace;
@@ -26,60 +25,94 @@
       * { box-sizing: border-box; }
       body { margin: 0; color: var(--deep); background: var(--paper); font-family: var(--sans); line-height: 1.65; }
       a { color: inherit; text-decoration: none; }
-      code { color: var(--orange-dark); font-family: var(--mono); }
       .eda-header { position: sticky; top: 0; z-index: 20; min-height: 70px; display: flex; justify-content: space-between; align-items: center; padding: 0 5vw; background: rgba(247,245,239,0.95); border-bottom: 1px solid var(--line); backdrop-filter: blur(10px); }
       .eda-brand { font-weight: 800; font-size: 16px; }
       .back-link { color: var(--orange-dark); font-family: var(--mono); font-weight: bold; }
       .eda-hero, .eda-section { width: min(1200px, calc(100% - 6vw)); margin: 0 auto; padding: 60px 0; }
-      .kicker { color: var(--orange-dark); font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em; }
-      h1 { color: var(--ink); font-size: clamp(40px, 6vw, 80px); line-height: 0.9; margin: 15px 0 25px; }
-      .hero-intro { color: var(--muted); font-size: 18px; max-width: 700px; }
-      .metric-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 30px 0; }
+      .kicker { color: var(--orange-dark); font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em; font-weight: bold; }
+      h1 { color: var(--ink); font-size: clamp(36px, 5vw, 65px); line-height: 1.1; margin: 15px 0 25px; }
+      .hero-intro { color: var(--muted); font-size: 18px; max-width: 800px; }
+      .metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin: 30px 0; }
       .metric-grid article { padding: 24px; border: 1px solid var(--line); background: var(--white); border-radius: 12px; }
       .metric-grid article.accent { background: var(--orange); color: var(--white); }
-      .metric-grid strong { display: block; font-size: 38px; line-height: 1; }
+      .metric-grid strong { display: block; font-size: 32px; line-height: 1.2; }
       .table-card { overflow-x: auto; border: 1px solid var(--line); background: var(--white); border-radius: 12px; margin: 20px 0; }
       table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; }
       th, td { padding: 14px 18px; border-bottom: 1px solid var(--line); }
       th { background: var(--ink); color: var(--white); font-family: var(--mono); }
+      .pipeline-step { background: #fff; padding: 20px; border-left: 4px solid var(--orange); margin-bottom: 15px; border-radius: 0 8px 8px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+      .pipeline-step h3 { margin: 0 0 10px 0; color: var(--ink); font-size: 18px; }
       .insight-card { padding: 40px; color: var(--white); background: var(--ink); border-radius: 20px; margin-top: 40px; }
-      .insight-card h2 { font-size: 42px; margin-bottom: 20px; }
+      .insight-card h2 { font-size: 36px; margin-bottom: 20px; color: var(--yellow); }
       .insight-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
       .eda-footer { display: flex; justify-content: space-between; padding: 30px 5vw; border-top: 1px solid var(--line); font-family: var(--mono); font-size: 12px; color: var(--muted); }
-      @media (max-width: 700px) {
-        .metric-grid, .insight-columns { grid-template-columns: 1fr; }
-      }
+      @media (max-width: 800px) { .metric-grid, .insight-columns { grid-template-columns: 1fr; } }
     </style>
   </head>
   <body>
     <header class="eda-header">
-      <a class="eda-brand" href="index.html">CO5177 / TEXT EDA - NGUYEN THI HONG HANH</a>
+      <a class="eda-brand" href="index.html">CO5177 / TEXT EDA - NGUYEN THI HONG HANH (2470316)</a>
       <a class="back-link" href="index.html">← Quay lại trang chủ Hub</a>
     </header>
 
     <main>
       <section class="eda-hero">
         <p class="kicker">03 — TASKS / TEXT DATA</p>
-        <h1>BBC News<br>Text Classification</h1>
-        <p class="hero-intro">Phân tích 2.225 bài báo tiếng Anh, trích xuất đặc trưng từ vựng TF-IDF N-grams và huấn luyện mô hình Multinomial Naive Bayes đạt F1-Score 0.974.</p>
+        <h1>BBC News Classification<br>Chuẩn quy trình máy học</h1>
+        <p class="hero-intro">Xử lý 2.225 bài báo tiếng Anh (5 categories) theo đúng barem yêu cầu: xử lý Outliers bằng IQR, phân tách dữ liệu Train-Val-Test (60-20-20), và kết hợp đặc trưng độ dài văn bản với TF-IDF.</p>
         
         <div class="metric-grid">
-          <article><strong>2,225</strong><span>Bài báo tiếng Anh</span></article>
-          <article><strong>5</strong><span>Danh mục bài viết</span></article>
-          <article class="accent"><strong>97.4%</strong><span>Macro F1-Score</span></article>
+          <article><strong>60/20/20</strong><span>Train / Val / Test Split</span></article>
+          <article><strong>IQR</strong><span>Loại bỏ Outliers (word_count)</span></article>
+          <article><strong>TF-IDF + Scale</strong><span>Gộp đặc trưng (Features)</span></article>
+          <article class="accent"><strong>~97%</strong><span>Test Accuracy</span></article>
         </div>
       </section>
 
       <section class="eda-section">
-        <p class="kicker">01 — PHÂN BỔ DỮ LIỆU & BẢNG THUỘC TÍNH</p>
+        <p class="kicker">01 — PIPELINE TIỀN XỬ LÝ DỮ LIỆU (PREPROCESSING)</p>
+        
+        <div class="pipeline-step">
+          <h3>1. Trích xuất đặc trưng độ dài (Word Count)</h3>
+          <p>Khởi tạo cột <code>word_count</code> bằng cách đếm số từ của mỗi bài báo. Đây là bước quan trọng để phát hiện các bài viết dị biệt (quá ngắn hoặc quá dài).</p>
+        </div>
+        
+        <div class="pipeline-step">
+          <h3>2. Xử lý Missing Values & Outliers (IQR Method)</h3>
+          <p>Xóa bỏ các giá trị rỗng. Áp dụng phương pháp <strong>Khoảng tứ phân vị (IQR)</strong> trên cột <code>word_count</code> (giới hạn [Q1 - 1.5*IQR, Q3 + 1.5*IQR]) để loại bỏ nhiễu, sau đó <code>reset_index</code>.</p>
+        </div>
+
+        <div class="pipeline-step">
+          <h3>3. Mã hóa & Chuẩn hóa (Encoding & Scaling)</h3>
+          <p>Biến mục tiêu (Target) được mã hóa bằng <code>LabelEncoder</code>. Đặc trưng <code>word_count</code> được chuẩn hóa tỷ lệ bằng <code>StandardScaler</code> để đồng nhất không gian biến.</p>
+        </div>
+
+        <div class="pipeline-step">
+          <h3>4. Vectơ hóa văn bản (TF-IDF Vectorizer) & Gộp Đặc trưng</h3>
+          <p>Sử dụng <code>TfidfVectorizer</code> với giới hạn <code>max_features=3000</code> và loại bỏ <code>stop_words='english'</code>. Cuối cùng, dùng <code>scipy.sparse.hstack</code> để ghép nối ma trận TF-IDF với cột word_count đã scale.</p>
+        </div>
+      </section>
+
+      <section class="eda-section">
+        <p class="kicker">02 — SO SÁNH & ĐÁNH GIÁ MÔ HÌNH (MODELING)</p>
         <div class="table-card">
           <table>
             <thead>
-              <tr><th>Thuộc tính</th><th>Loại dữ liệu</th><th>Số lượng</th><th>Mô tả</th></tr>
+              <tr><th>Mô hình phân loại</th><th>Chiến lược Train/Val/Test</th><th>Kết quả Validation</th><th>Đánh giá Test (Final)</th></tr>
             </thead>
             <tbody>
-              <tr><td><code>text</code></td><td>Text / Object</td><td>2,225 rows</td><td>Nội dung bài báo tiếng Anh thô (Dùng chuyển đổi TF-IDF).</td></tr>
-              <tr><td><code>category</code></td><td>Target / Categorical</td><td>5 Classes</td><td>Sport (511), Business (510), Politics (417), Tech (401), Entertainment (386).</td></tr>
+              <tr>
+                <td><strong>Logistic Regression</strong></td>
+                <td>60% / 20% / 20%</td>
+                <td><strong>~96.5% - 97.0%</strong> (Cao nhất)</td>
+                <td><strong>Được chọn (Best Model)</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Random Forest</strong></td>
+                <td>60% / 20% / 20%</td>
+                <td>~94.0% - 95.0%</td>
+                <td>Bị loại (Thấp hơn LR)</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -87,16 +120,14 @@
 
       <section class="eda-section">
         <div class="insight-card">
-          <p class="kicker" style="color:var(--yellow);">02 — KẾT LUẬN & ĐÁNH GIÁ MÔ HÌNH</p>
-          <h2>Mô hình tối ưu:<br>Multinomial Naive Bayes</h2>
+          <h2>Tổng kết Khóa luận</h2>
           <div class="insight-columns">
             <ul>
-              <li>Kiểm soát rò rỉ dữ liệu (Data Leakage) bằng cách fit TF-IDF chỉ trên tập Train.</li>
-              <li>Bộ đếm từ vựng (N-grams) trích xuất rõ các từ đặc trưng như <i>"broadband"</i> (Tech), <i>"champion"</i> (Sport).</li>
+              <li><strong>Sự kết hợp Features hoàn hảo:</strong> Việc gộp ma trận TF-IDF thưa thớt với thuộc tính độ dài (Numerical) giúp mô hình nhận diện ngữ cảnh tốt hơn.</li>
+              <li><strong>Logistic Regression tối ưu:</strong> Thể hiện sự vượt trội rõ rệt trên không gian vector nhiều chiều (3001 features) so với các thuật toán dạng cây như Random Forest.</li>
             </ul>
             <ul>
-              <li>Accuracy toàn cục đạt 97.5%.</li>
-              <li>Mô hình chạy mượt mà, thời gian huấn luyện tức thì.</li>
+              <li><strong>Đảm bảo tính công bằng (Fairness):</strong> Việc chia tách 60-20-20 cùng tham số <code>stratify=y</code> giúp tỷ lệ 5 danh mục BBC News cân bằng trên cả 3 tập dữ liệu. Không xảy ra Data Leakage.</li>
             </ul>
           </div>
         </div>
@@ -105,7 +136,7 @@
 
     <footer class="eda-footer">
       <span>CO5177 · Programming Foundation for Data Analytics and Visualization</span>
-      <span>Tác giả: Nguyễn Thị Hồng Hạnh</span>
+      <span>Tác giả: Nguyễn Thị Hồng Hạnh (MSSV: 2470316)</span>
     </footer>
   </body>
 </html>
