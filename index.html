@@ -1,0 +1,333 @@
+# 2. Update index.html to put Author = Nguyen Thi Hong Hanh and GitHub repo = nguyenthihonghanh
+index_html = """<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      name="description"
+      content="Assignment for Programming Foundation for Data Analytics and Visualization (CO5177)."
+    >
+    <meta name="theme-color" content="#f7f5ef">
+    <meta property="og:title" content="DataFlow — From raw data to real insight">
+    <meta
+      property="og:description"
+      content="Project hub cho hành trình phân tích dữ liệu, trực quan hóa và machine learning."
+    >
+    <meta property="og:type" content="website">
+    <title>DataFlow | HCMUT Data Analytics Project</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="styles.css">
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Đi đến nội dung chính</a>
+
+    <header class="site-header" data-header>
+      <a class="brand" href="#top" aria-label="DataFlow - Trang chủ">
+        <img class="brand-logo" src="assets/logo-bachkhoa.png" alt="Logo Bách Khoa TP.HCM">
+        <span>NGUYEN THI HONG HANH</span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Mở menu"
+        aria-expanded="false"
+        aria-controls="site-nav"
+        data-menu-toggle
+      >
+        <span></span><span></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Điều hướng chính" data-nav>
+        <a href="#overview">Overview</a>
+        <a href="#data-tracks">Tasks</a>
+      </nav>
+
+      <a
+        class="header-cta"
+        href="https://github.com/nguyenthihonghanh"
+        target="_blank"
+        rel="noreferrer"
+      >
+        GitHub
+        <svg viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M5.5 14.5 14.5 5.5M7 5.5h7.5V13" />
+        </svg>
+      </a>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero-orbit hero-orbit-one" aria-hidden="true"></div>
+        <div class="hero-orbit hero-orbit-two" aria-hidden="true"></div>
+
+        <div class="hero-copy">
+          <p class="eyebrow reveal">
+            HO CHI MINH CITY UNIVERSITY OF TECHNOLOGY - VIETNAM NATIONAL UNIVERSITY HO CHI MINH CITY
+          </p>
+          <h1 id="hero-title" class="reveal">
+            <span>MASTER'S ASSIGNMENTS</span>
+            <span class="hero-title-accent">Programming Foundation<br>for Data Analytics and Visualization</span>
+          </h1>
+          <div class="signal-bars reveal" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <p class="hero-lead reveal">
+            Course ID: CO5177 | Semester: HK261 | Academic Year: 2026-2027
+          </p>
+          <div class="hero-info-grid reveal">
+            <aside class="course-info" aria-label="Course information">
+              <span class="info-card-label">COURSE INFORMATION</span>
+              <p><strong>University:</strong> Ho Chi Minh City University of Technology (HCMUT) - Vietnam National University Ho Chi Minh City (VNU-HCM)</p>
+              <p><strong>Faculty:</strong> Faculty of Computer Science and Engineering (CSE)</p>
+              <p><strong>Course:</strong> Programming Foundation for Data Analytics and Visualization - PF4DAV (CO5177)</p>
+              <p><strong>Semester:</strong> HK261 (2026-2027)</p>
+              <p><strong>Lecturer:</strong> Dr. Le Thanh Sach</p>
+            </aside>
+            <aside class="course-info personal-info" aria-label="Personal information">
+              <span class="info-card-label">PERSONAL INFORMATION</span>
+              <p><strong>Group:</strong> Trailblazer</p>
+              <p><strong>Name:</strong> Nguyen Thi Hong Hanh</p>
+              <p><strong>Student ID:</strong> 2670306</p>
+              <p><strong>Role:</strong> Project owner</p>
+              <p><strong>Personal Website:</strong> <a class="info-link" href="https://nguyenthihonghanh.github.io" target="_blank" rel="noreferrer">nguyenthihonghanh.github.io</a></p>
+              <p><strong>Repository:</strong> <a class="info-link" href="https://github.com/nguyenthihonghanh/CO5177-Programming_Foundation_for_Data_Analytics_and_Visualization" target="_blank" rel="noreferrer">CO5177-Programming_Foundation_for_Data_Analytics_and_Visualization</a></p>
+            </aside>
+          </div>
+          <div class="hero-actions reveal">
+            <a class="button button-primary" href="#overview">
+              OVERVIEW
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="m7 4 6 6-6 6" />
+              </svg>
+            </a>
+            <a
+              class="button button-secondary"
+              href="#data-tracks"
+            >
+              TASKS
+            </a>
+          </div>
+        </div>
+
+        <div class="scroll-cue" aria-hidden="true">
+          <span>scroll to explore</span>
+          <i></i>
+        </div>
+      </section>
+
+      <section class="ticker" aria-label="Các công nghệ sử dụng">
+        <div class="ticker-track">
+          <span>PYTHON</span><i></i><span>NUMPY</span><i></i><span>PANDAS</span><i></i>
+          <span>SEABORN</span><i></i><span>SCIKIT-LEARN</span><i></i><span>OPENCV</span><i></i>
+          <span aria-hidden="true">PYTHON</span><i aria-hidden="true"></i>
+          <span aria-hidden="true">NUMPY</span><i aria-hidden="true"></i>
+          <span aria-hidden="true">PANDAS</span><i aria-hidden="true"></i>
+          <span aria-hidden="true">SEABORN</span><i aria-hidden="true"></i>
+          <span aria-hidden="true">SCIKIT-LEARN</span><i aria-hidden="true"></i>
+          <span aria-hidden="true">OPENCV</span><i aria-hidden="true"></i>
+        </div>
+      </section>
+
+      <section class="section overview-section" id="overview">
+        <div class="section-heading reveal">
+          <p class="section-kicker">01 — TỔNG QUAN</p>
+          <h2>Một project hub.<br>Toàn bộ hành trình dữ liệu.</h2>
+          <p>
+            Không chỉ là nơi đặt notebook. DataFlow kết nối câu hỏi, dữ liệu, mô hình
+            và câu chuyện thành một quy trình có thể tái lập.
+          </p>
+        </div>
+
+        <div class="overview-grid">
+          <article class="overview-card overview-card-large reveal">
+            <span class="card-label">MISSION</span>
+            <h3>From raw data<br>to <em>real insight.</em></h3>
+            <p>
+              Áp dụng Python, OOP và hệ sinh thái data science để phân tích nhiều
+              loại dữ liệu — từ khám phá, tiền xử lý đến đánh giá mô hình.
+            </p>
+            <div class="mini-flow" role="img" aria-label="Bốn giai đoạn dự án">
+              <span>COLLECT</span><i></i><span>CLEAN</span><i></i>
+              <span>MODEL</span><i></i><span>COMMUNICATE</span>
+            </div>
+          </article>
+
+          <article class="overview-card stat-card stat-yellow reveal">
+            <span class="card-label">TABULAR / TEXT</span>
+            <strong><span>2.000</span><sup>+</sup></strong>
+            <p>samples tối thiểu cho mỗi hướng dữ liệu cốt lõi.</p>
+          </article>
+
+          <article class="overview-card stat-card stat-mint reveal">
+            <span class="card-label">IMAGE DATA</span>
+            <strong><span>5.000</span><sup>+</sup></strong>
+            <p>hình ảnh với tối thiểu 3 lớp cho bài toán classification.</p>
+          </article>
+
+          <article class="overview-card profile-card reveal">
+            <div class="profile-head">
+              <span class="profile-avatar">HH</span>
+              <div>
+                <strong>Nguyen Thi Hong Hanh</strong>
+                <small>Project owner · HCMUT</small>
+              </div>
+            </div>
+            <p>Researcher building thoughtful, reproducible data experiences.</p>
+            <a
+              href="https://github.com/nguyenthihonghanh"
+              target="_blank"
+              rel="noreferrer"
+            >
+              @nguyenthihonghanh
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M5.5 14.5 14.5 5.5M7 5.5h7.5V13" />
+              </svg>
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section tracks-section" id="data-tracks">
+        <div class="section-heading reveal">
+          <p class="section-kicker">02 — TASKS</p>
+          <h2>Tasks<br>cho mọi loại dữ liệu.</h2>
+        </div>
+
+        <div class="track-shell reveal">
+          <div class="track-tabs" role="tablist" aria-label="Chọn loại dữ liệu">
+            <button
+              type="button"
+              role="tab"
+              aria-selected="true"
+              aria-controls="track-panel"
+              id="tab-tabular"
+              data-track="tabular"
+            >
+              <span>01</span> Tabular
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="track-panel"
+              id="tab-text"
+              data-track="text"
+            >
+              <span>02</span> Text
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="track-panel"
+              id="tab-image"
+              data-track="image"
+            >
+              <span>03</span> Image
+            </button>
+          </div>
+
+          <div class="track-panel" id="track-panel" role="tabpanel" aria-labelledby="tab-tabular">
+            <div class="track-copy">
+              <p class="track-type" data-track-type>CORE TRACK · BẮT BUỘC</p>
+              <h3 data-track-title>Tabular Data</h3>
+              <p data-track-description>
+                Khám phá các mối quan hệ ẩn trong dữ liệu dạng bảng bằng thống kê,
+                trực quan và machine learning có thể giải thích.
+              </p>
+              <ul class="track-list" data-track-list>
+                <li>≥ 2.000 samples, ≥ 10 cột</li>
+                <li>Missing values &amp; outliers</li>
+                <li>Categorical + numerical features</li>
+              </ul>
+              <a class="track-report-link button button-secondary" data-report-link href="tabular-eda.html">
+                Mở báo cáo EDA
+                <svg viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="m7 4 6 6-6 6" />
+                </svg>
+              </a>
+            </div>
+
+            <div class="data-preview" aria-live="polite">
+              <div class="preview-toolbar">
+                <span data-preview-name>dataset.csv</span>
+                <div><i></i><i></i><i></i></div>
+              </div>
+              <div class="preview-visual preview-table" data-preview>
+                <div class="table-head">
+                  <span>id</span><span>category</span><span>value</span><span>target</span>
+                </div>
+                <div><span>#0842</span><span class="pill pill-yellow">alpha</span><span>18.42</span><span>1</span></div>
+                <div><span>#0843</span><span class="pill pill-mint">beta</span><span>—</span><span>0</span></div>
+                <div><span>#0844</span><span class="pill pill-orange">gamma</span><span>31.07</span><span>1</span></div>
+                <div><span>#0845</span><span class="pill pill-yellow">alpha</span><span>22.91</span><span>0</span></div>
+                <div><span>#0846</span><span class="pill pill-mint">beta</span><span>14.66</span><span>1</span></div>
+              </div>
+              <div class="preview-foot">
+                <span><i></i> schema valid</span>
+                <span data-preview-count>2.000+ rows</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <div class="cta-content reveal">
+          <p>READY TO FOLLOW THE DATA?</p>
+          <h2>Let’s make the pattern<br><em>visible.</em></h2>
+          <a
+            class="button button-light"
+            href="https://github.com/nguyenthihonghanh"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Mở GitHub profile
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="m7 4 6 6-6 6" />
+            </svg>
+          </a>
+        </div>
+        <div class="cta-bars" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand footer-brand" href="#top">
+        <img class="brand-logo" src="assets/logo-bachkhoa.png" alt="Logo Bách Khoa TP.HCM">
+        <span>DataFlow</span>
+      </a>
+      <p>
+        Nền tảng lập trình cho phân tích và trực quan dữ liệu<br>
+        Giảng viên: Lê Thành Sách · HCMUT · 2026
+      </p>
+      <a
+        href="https://github.com/nguyenthihonghanh"
+        target="_blank"
+        rel="noreferrer"
+      >
+        GitHub ↗
+      </a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+"""
+
+with open('index.html', 'w', encoding='utf-8') as f:
+    f.write(index_html)
+
+print("Updated index.html successfully.")
