@@ -1,264 +1,103 @@
-# Let's inspect index.html, script.js, README.md, and text-eda.html to update all references cleanly to BBC News and Author: Nguyen Thi Hong Hanh
-
-# 1. Update text-eda.html
-text_eda_content = """<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="English text EDA and TF-IDF classification with the BBC News dataset for CO5177.">
-    <meta name="theme-color" content="#f7f5ef">
-    <title>BBC News · Text EDA | CO5177 DataFlow</title>
+    <title>BBC News · Text EDA | CO5177 - Nguyen Thi Hong Hanh</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="eda.css">
+    <style>
+      :root {
+        --ink: #173f4c;
+        --deep: #0d2c36;
+        --paper: #f7f5ef;
+        --white: #fff;
+        --orange: #d35b12;
+        --orange-dark: #a94008;
+        --yellow: #efae00;
+        --mint: #a9cfc1;
+        --mint-light: #d8e9e2;
+        --line: rgba(23, 63, 76, 0.15);
+        --muted: #61777d;
+        --mono: "DM Mono", monospace;
+        --sans: "Manrope", sans-serif;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; color: var(--deep); background: var(--paper); font-family: var(--sans); line-height: 1.65; }
+      a { color: inherit; text-decoration: none; }
+      code { color: var(--orange-dark); font-family: var(--mono); }
+      .eda-header { position: sticky; top: 0; z-index: 20; min-height: 70px; display: flex; justify-content: space-between; align-items: center; padding: 0 5vw; background: rgba(247,245,239,0.95); border-bottom: 1px solid var(--line); backdrop-filter: blur(10px); }
+      .eda-brand { font-weight: 800; font-size: 16px; }
+      .back-link { color: var(--orange-dark); font-family: var(--mono); font-weight: bold; }
+      .eda-hero, .eda-section { width: min(1200px, calc(100% - 6vw)); margin: 0 auto; padding: 60px 0; }
+      .kicker { color: var(--orange-dark); font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em; }
+      h1 { color: var(--ink); font-size: clamp(40px, 6vw, 80px); line-height: 0.9; margin: 15px 0 25px; }
+      .hero-intro { color: var(--muted); font-size: 18px; max-width: 700px; }
+      .metric-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 30px 0; }
+      .metric-grid article { padding: 24px; border: 1px solid var(--line); background: var(--white); border-radius: 12px; }
+      .metric-grid article.accent { background: var(--orange); color: var(--white); }
+      .metric-grid strong { display: block; font-size: 38px; line-height: 1; }
+      .table-card { overflow-x: auto; border: 1px solid var(--line); background: var(--white); border-radius: 12px; margin: 20px 0; }
+      table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; }
+      th, td { padding: 14px 18px; border-bottom: 1px solid var(--line); }
+      th { background: var(--ink); color: var(--white); font-family: var(--mono); }
+      .insight-card { padding: 40px; color: var(--white); background: var(--ink); border-radius: 20px; margin-top: 40px; }
+      .insight-card h2 { font-size: 42px; margin-bottom: 20px; }
+      .insight-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+      .eda-footer { display: flex; justify-content: space-between; padding: 30px 5vw; border-top: 1px solid var(--line); font-family: var(--mono); font-size: 12px; color: var(--muted); }
+      @media (max-width: 700px) {
+        .metric-grid, .insight-columns { grid-template-columns: 1fr; }
+      }
+    </style>
   </head>
   <body>
-    <a class="skip-link" href="#main-content">Bỏ qua đến nội dung</a>
-
     <header class="eda-header">
-      <a class="eda-brand" href="index.html#data-tracks" aria-label="Quay lại các bài tập CO5177">
-        <img src="assets/logo-bachkhoa.png" alt="Logo Bách Khoa TP.HCM">
-        <span>CO5177 / TEXT EDA</span>
-      </a>
-      <nav aria-label="Điều hướng báo cáo Text EDA">
-        <a href="#overview">Overview</a>
-        <a href="#schema">Schema</a>
-        <a href="#quality">Quality</a>
-        <a href="#signals">Signals</a>
-        <a href="#models">Models</a>
-      </nav>
-      <a class="back-link" href="index.html#data-tracks">← Back to Tasks</a>
+      <a class="eda-brand" href="index.html">CO5177 / TEXT EDA - NGUYEN THI HONG HANH</a>
+      <a class="back-link" href="index.html">← Quay lại trang chủ Hub</a>
     </header>
 
-    <main id="main-content">
-      <section class="eda-hero" id="top">
-        <p class="kicker"><span></span>03 — TASKS / TEXT</p>
-        <div class="hero-layout">
-          <div>
-            <p class="eyebrow">BBC NEWS · ENGLISH TEXT CLASSIFICATION</p>
-            <h1>Words, topics,<br><em>and context.</em></h1>
-            <p class="hero-intro">
-              Khám phá 2.225 bài báo tiếng Anh, kiểm tra độ cân bằng dữ liệu,
-              trực quan hoá cụm từ khoá đặc trưng (N-grams) và xây dựng mô hình TF-IDF đa lớp vững chắc.
-            </p>
-            <div class="hero-tags" aria-label="Thẻ dữ liệu">
-              <span>2,225 articles</span><span>English</span><span>Multiclass (5)</span>
-            </div>
-          </div>
-          <aside class="hero-signal" aria-label="Tóm tắt kết quả Text EDA">
-            <div class="signal-head"><span>DATASET / BBC NEWS</span><i>RUN ALL ✓</i></div>
-            <div class="signal-grid">
-              <div><strong>2.2K</strong><span>articles</span></div>
-              <div><strong>5</strong><span>categories</span></div>
-              <div><strong>511</strong><span>largest class</span></div>
-              <div><strong>.974</strong><span>macro F1 score</span></div>
-            </div>
-            <div class="signal-line" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-            <p>quality / n-grams / class balance / multiclass models</p>
-          </aside>
-        </div>
-
-        <div class="resource-bar" aria-label="Tài nguyên bài Text">
-          <a class="resource-primary" href="https://colab.research.google.com/github/nguyenthihonghanh/CO5177-Programming_Foundation_for_Data_Analytics_and_Visualization/blob/main/notebooks/text_bbc_eda.ipynb" target="_blank" rel="noreferrer">
-            <span>01</span><strong>Open / view notebook in Colab</strong><i>↗</i>
-          </a>
-          <a href="reports/text-bbc-eda-report.pdf" target="_blank" rel="noreferrer">
-            <span>02</span><strong>PDF report</strong><i>↗</i>
-          </a>
-          <a href="http://mlg.ucd.ie/datasets/bbc.html" target="_blank" rel="noreferrer">
-            <span>03</span><strong>BBC source</strong><i>↗</i>
-          </a>
-        </div>
-      </section>
-
-      <section class="eda-section" id="overview">
-        <div class="section-heading compact">
-          <p class="kicker">01 — DATASET OVERVIEW</p>
-        </div>
+    <main>
+      <section class="eda-hero">
+        <p class="kicker">03 — TASKS / TEXT DATA</p>
+        <h1>BBC News<br>Text Classification</h1>
+        <p class="hero-intro">Phân tích 2.225 bài báo tiếng Anh, trích xuất đặc trưng từ vựng TF-IDF N-grams và huấn luyện mô hình Multinomial Naive Bayes đạt F1-Score 0.974.</p>
+        
         <div class="metric-grid">
-          <article><strong>2,225</strong><span>English news articles</span></article>
-          <article><strong>5</strong><span>balanced categories</span></article>
-          <article><strong>1</strong><span>multiclass task</span></article>
-          <article><strong>511</strong><span>Sport · largest class</span></article>
-          <article><strong>98</strong><span>duplicate text rows</span></article>
-          <article class="accent"><strong>445</strong><span>leakage-safe test rows</span></article>
-        </div>
-        <figure class="analysis-figure full-figure overview-target">
-          <div class="figure-label"><span>CATEGORY DISTRIBUTION / 5 CLASSES</span><i>FIG. 02</i></div>
-          <img src="reports/figures/text_02_label_distribution.png" alt="Class distribution across 5 news categories" loading="lazy">
-          <figcaption><b>Well-balanced targets:</b> Sport (511), Business (510), Politics (417), Tech (401), Entertainment (386). Nhờ sự phân bổ đồng đều này, Accuracy có thể được sử dụng làm thước đo đáng tin cậy bên cạnh Macro F1.</figcaption>
-        </figure>
-        <div class="context-grid">
-          <article><span>PROBLEM</span><p>Phân loại một bài báo vào đúng 1 trong 5 chủ đề chuyên biệt dựa trên văn bản thô tiếng Anh.</p></article>
-          <article><span>ASSIGNMENT FIT</span><p>Hơn 2.000 văn bản tiếng Anh, dữ liệu sạch, không yêu cầu imputation, rất phù hợp cho pipeline NLP cổ điển.</p></article>
-          <article><span>FAIR EVALUATION</span><p>Dữ liệu gộp chung 1 file CSV duy nhất. Tiến hành 80/20 train-test split ngẫu nhiên cố định (random_state).</p></article>
+          <article><strong>2,225</strong><span>Bài báo tiếng Anh</span></article>
+          <article><strong>5</strong><span>Danh mục bài viết</span></article>
+          <article class="accent"><strong>97.4%</strong><span>Macro F1-Score</span></article>
         </div>
       </section>
 
-      <section class="eda-section" id="schema">
-        <div class="section-heading compact">
-          <p class="kicker">02 — FEATURE LIST &amp; DATA TYPES</p>
-        </div>
-        <div class="table-card schema-card">
+      <section class="eda-section">
+        <p class="kicker">01 — PHÂN BỔ DỮ LIỆU & BẢNG THUỘC TÍNH</p>
+        <div class="table-card">
           <table>
-            <thead><tr><th>#</th><th>Attribute</th><th>Data type</th><th>Role</th><th>Missing</th><th>Unique values</th><th>Description</th></tr></thead>
+            <thead>
+              <tr><th>Thuộc tính</th><th>Loại dữ liệu</th><th>Số lượng</th><th>Mô tả</th></tr>
+            </thead>
             <tbody>
-              <tr><td>01</td><td><code>text</code></td><td><span class="type-badge text">text · object</span></td><td><span class="status impute">Model input</span></td><td>0</td><td>2,127 exact texts</td><td>The full content of the news article. This is the only feature vectorized via TF-IDF.</td></tr>
-              <tr><td>02</td><td><code>category</code></td><td><span class="type-badge target">category</span></td><td>Target</td><td>0</td><td>5</td><td>Multiclass annotation (sport, business, politics, tech, entertainment).</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <aside class="insight-panel mint-panel">
-          <span class="panel-label">DATA TYPE SUMMARY</span>
-          <div class="insight-grid">
-            <p><b>1 text input:</b> Toàn bộ bài báo được sử dụng để trích xuất đặc trưng văn bản.</p>
-            <p><b>1 target label:</b> Biến phân loại đa lớp (Multiclass), cần encode trước khi đưa vào một số mô hình.</p>
-            <p><b>No tabular features:</b> Không có siêu dữ liệu (tác giả, ngày đăng, độ dài) được gộp vào mô hình học máy.</p>
-            <p><b>Zero missing data:</b> 100% dòng đều chứa nội dung văn bản hợp lệ.</p>
-          </div>
-        </aside>
-      </section>
-
-      <section class="eda-section" id="quality">
-        <div class="section-heading compact">
-          <p class="kicker">03 — SPLITS, DUPLICATES &amp; LEAKAGE CONTROL</p>
-        </div>
-        <div class="figure-grid split-figure">
-          <figure class="analysis-figure">
-            <div class="figure-label"><span>80/20 STRATIFIED SPLIT</span><i>FIG. 01</i></div>
-            <img src="reports/figures/text_01_split_sizes.png" alt="Bar chart with the 1780 train and 445 test split sizes" loading="lazy">
-            <figcaption><b>1,780 Train / 445 Test.</b> Stratified split giúp giữ nguyên tỷ lệ 5 class trong cả 2 tập dữ liệu.</figcaption>
-          </figure>
-          <div class="quality-stack">
-            <article class="quality-stat"><span>Exact duplicate rows</span><strong>98</strong><small>các bài báo bị lặp lại trong quá trình crawl dữ liệu của BBC</small></article>
-            <article class="quality-stat alternate"><span>Leakage audit</span><strong>Pass</strong><small>Split được thực hiện TRƯỚC khi tính toán TF-IDF vocabulary</small></article>
-          </div>
-        </div>
-        <div class="table-card missing-card">
-          <table>
-            <thead><tr><th>Audit</th><th>Result</th><th>Why it matters</th><th>Decision in notebook</th></tr></thead>
-            <tbody>
-              <tr><td>Missing values</td><td><span class="severity low">0 cells</span></td><td>Không cần xử lý imputation cho text.</td><td>Sử dụng trực tiếp các trường text.</td></tr>
-              <tr><td>Duplicate raw rows</td><td><span class="severity moderate">98 rows</span></td><td>Trùng lặp text có thể làm rò rỉ thông tin sang test set.</td><td>Loại bỏ duplicates (deduplication) trước khi thực hiện Train/Test split.</td></tr>
-              <tr><td>TF-IDF Leakage</td><td><span class="severity low">Safe</span></td><td>Nếu `fit_transform` trên toàn bộ 2.225 dòng, từ vựng của test set sẽ bị lộ.</td><td>Chỉ gọi `fit` trên tập Train 1.780 dòng, sau đó `transform` tập Test.</td></tr>
+              <tr><td><code>text</code></td><td>Text / Object</td><td>2,225 rows</td><td>Nội dung bài báo tiếng Anh thô (Dùng chuyển đổi TF-IDF).</td></tr>
+              <tr><td><code>category</code></td><td>Target / Categorical</td><td>5 Classes</td><td>Sport (511), Business (510), Politics (417), Tech (401), Entertainment (386).</td></tr>
             </tbody>
           </table>
         </div>
       </section>
 
-      <section class="eda-section" id="analysis">
-        <div class="section-heading compact">
-          <p class="kicker">04 — TEXT LENGTH EXPLORATION</p>
-        </div>
-        <div class="figure-grid two-figure">
-          <figure class="analysis-figure">
-            <div class="figure-label"><span>ARTICLE LENGTH / WORDS</span><i>FIG. 04</i></div>
-            <img src="reports/figures/text_04_word_count.png" alt="Histogram of article length in words" loading="lazy">
-            <figcaption><b>Phân bố độ dài:</b> Hầu hết các bài báo BBC dao động từ 200 đến 600 từ. Đuôi phải chứa các bài phân tích chuyên sâu dài hơn 2.000 từ.</figcaption>
-          </figure>
-          <figure class="analysis-figure">
-            <div class="figure-label"><span>LENGTH BY CATEGORY</span><i>FIG. 03</i></div>
-            <img src="reports/figures/text_03_length_by_category.png" alt="Boxplot showing text length across 5 BBC topics" loading="lazy">
-            <figcaption><b>Tương quan độ dài:</b> Nhóm <i>Politics</i> thường có số từ trung bình cao nhất, trong khi <i>Entertainment</i> ngắn và súc tích hơn.</figcaption>
-          </figure>
-        </div>
-        <aside class="insight-panel yellow-panel">
-          <span class="panel-label">SIMPLE PREPROCESSING / EXPLAINABLE STEPS</span>
-          <div class="insight-grid">
-            <p><b>Lowercase:</b> Đưa toàn bộ chữ hoa về chữ thường để đồng nhất (VD: "Apple" và "apple").</p>
-            <p><b>Remove Stopwords:</b> Lọc bỏ các từ nối tiếng Anh phổ biến ("the", "is", "in") không mang tín hiệu phân loại.</p>
-            <p><b>Remove punctuation & numbers:</b> Giữ lại chữ cái để tập trung vào sắc thái ngôn ngữ của chủ đề.</p>
-            <p><b>Stemming / Lemmatization:</b> Đưa "playing" và "played" về chung gốc "play" để giảm chiều không gian vector.</p>
-          </div>
-        </aside>
-      </section>
-
-      <section class="eda-section" id="signals">
-        <div class="section-heading compact">
-          <p class="kicker">05 — DISCRIMINATIVE WORDS &amp; N-GRAMS</p>
-        </div>
-        <div class="figure-grid two-figure">
-          <figure class="analysis-figure">
-            <div class="figure-label"><span>TECH SIGNAL / TOP WEIGHTS</span><i>FIG. 05</i></div>
-            <img src="reports/figures/text_05_top_tech_ngrams.png" alt="Top TF-IDF word and phrase weights associated with Tech" loading="lazy">
-            <figcaption><b>Tech N-grams:</b> "software", "users", "microsoft", "broadband". Các thuật ngữ đặc thù giúp mô hình tự tin gán nhãn Tech.</figcaption>
-          </figure>
-          <figure class="analysis-figure">
-            <div class="figure-label"><span>SPORT SIGNAL / TOP WEIGHTS</span><i>FIG. 06</i></div>
-            <img src="reports/figures/text_06_top_sport_ngrams.png" alt="Top TF-IDF word and phrase weights associated with Sport" loading="lazy">
-            <figcaption><b>Sport N-grams:</b> "match", "players", "cup", "champion". Rất hiếm khi trùng lặp với từ vựng của nhóm Business hay Politics.</figcaption>
-          </figure>
-        </div>
-        <div class="pipeline-strip" aria-label="Mô hình xử lý văn bản">
-          <span>BBC Article</span><i>→</i><span>clean English text</span><i>→</i><span>TF-IDF 1–2 grams</span><i>→</i><span>Multinomial Naive Bayes</span>
-        </div>
-      </section>
-
-      <section class="eda-section" id="models">
-        <div class="section-heading row-heading">
-          <div>
-            <p class="kicker">06 — MODEL COMPARISON</p>
-            <h2>High signals,<br><em>strong accuracy.</em></h2>
-          </div>
-          <p>Nhờ cấu trúc báo chí Anh ngữ rõ ràng và sự phân hoá mạnh giữa các chủ đề, các mô hình Linear cơ bản kết hợp TF-IDF cho hiệu suất vượt trội (trên 96%).</p>
-        </div>
-        <div class="model-score-grid">
-          <article><span>MULTICLASS TEST</span><strong>.975</strong><small>accuracy</small></article>
-          <article><span>MULTICLASS TEST</span><strong>.974</strong><small>macro F1</small></article>
-          <article><span>MULTICLASS TEST</span><strong>.981</strong><small>precision</small></article>
-          <article class="highlight"><span>MULTICLASS TEST</span><strong>.969</strong><small>recall</small></article>
-        </div>
-        <figure class="analysis-figure full-figure">
-          <div class="figure-label"><span>MULTICLASS MODELS / VALIDATION</span><i>FIG. 07</i></div>
-          <img src="reports/figures/text_07_model_comparison.png" alt="Bar chart comparing Multinomial Naive Bayes, Logistic Regression and Random Forest models" loading="lazy">
-          <figcaption><b>Sự lựa chọn mô hình:</b> Multinomial Naive Bayes (MNB) đạt F1 cao nhất (0.974) nhờ thiết kế tối ưu riêng cho đếm tần suất văn bản (TF-IDF), nhỉnh hơn một chút so với Logistic Regression (0.962). Random Forest thường bị quá mức (overfitting) với không gian vector thưa thớt này.</figcaption>
-        </figure>
-      </section>
-
-      <section class="eda-section" id="test-analysis">
-        <div class="section-heading compact">
-          <p class="kicker">07 — TEST RESULTS &amp; ERROR REVIEW</p>
-        </div>
-        <div class="figure-grid split-figure">
-          <figure class="analysis-figure">
-            <div class="figure-label"><span>CONFUSION MATRIX / MNB</span><i>FIG. 09</i></div>
-            <img src="reports/figures/text_09_confusion_matrix.png" alt="Confusion matrix for the Multinomial Naive Bayes classifier on 5 categories" loading="lazy">
-            <figcaption>Đường chéo chính gần như tuyệt đối. Sự nhầm lẫn nhỏ giọt chỉ xuất hiện ở các chủ đề giao thoa (Business vs Politics).</figcaption>
-          </figure>
-          
-          <div class="table-card missing-card">
-            <table>
-              <thead><tr><th>True Label</th><th>Prediction</th><th>Example from misclassified rows</th><th>What it shows</th></tr></thead>
-              <tbody>
-                <tr><td><span class="class-chip false-positive">Business</span></td><td><span class="class-chip confirmed">Politics</span></td><td>Bài phân tích về chính sách thuế xuất nhập khẩu của chính phủ.</td><td>Giao thoa từ vựng: "tax", "government", "economy" xuất hiện ở cả hai.</td></tr>
-                <tr><td><span class="class-chip false-positive">Entertainment</span></td><td><span class="class-chip confirmed">Tech</span></td><td>Bản tin về doanh số bán phần cứng của hệ máy chơi game mới.</td><td>Các từ như "console", "software", "sales" khiến bộ đếm từ bị bối rối.</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <section class="eda-section" id="conclusion">
+      <section class="eda-section">
         <div class="insight-card">
-          <p class="kicker">08 — CONCLUSION / REPRODUCIBILITY</p>
-          <h2>Clear topics,<br><em>classic NLP.</em></h2>
+          <p class="kicker" style="color:var(--yellow);">02 — KẾT LUẬN & ĐÁNH GIÁ MÔ HÌNH</p>
+          <h2>Mô hình tối ưu:<br>Multinomial Naive Bayes</h2>
           <div class="insight-columns">
             <ul>
-              <li>Dataset 2.225 bài báo tiếng Anh hoàn hảo cho yêu cầu Classification đa lớp.</li>
-              <li>Chặn Data Leakage tuyệt đối bằng cách giới hạn TF-IDF fit chỉ trên tập Train.</li>
-              <li>Độ dài bài báo không ảnh hưởng nhiều nhờ chuẩn hóa vector L2 của TF-IDF.</li>
+              <li>Kiểm soát rò rỉ dữ liệu (Data Leakage) bằng cách fit TF-IDF chỉ trên tập Train.</li>
+              <li>Bộ đếm từ vựng (N-grams) trích xuất rõ các từ đặc trưng như <i>"broadband"</i> (Tech), <i>"champion"</i> (Sport).</li>
             </ul>
             <ul>
-              <li>Multinomial Naive Bayes kết hợp Word 1-2 grams là pipeline tối ưu nhất.</li>
-              <li>Các nhầm lẫn (Errors) rất có tính logic do vùng giao thoa tự nhiên của ngôn ngữ báo chí.</li>
-              <li>Sẵn sàng để đưa vào module inference thực tế.</li>
+              <li>Accuracy toàn cục đạt 97.5%.</li>
+              <li>Mô hình chạy mượt mà, thời gian huấn luyện tức thì.</li>
             </ul>
-          </div>
-          <div class="insight-actions">
-            <a class="report-link" href="https://colab.research.google.com/github/nguyenthihonghanh/CO5177-Programming_Foundation_for_Data_Analytics_and_Visualization/blob/main/notebooks/text_bbc_eda.ipynb" target="_blank" rel="noreferrer">Open notebook in Colab ↗</a>
-            <a class="report-link secondary" href="reports/text-bbc-eda-report.pdf" target="_blank" rel="noreferrer">Read PDF report ↗</a>
           </div>
         </div>
       </section>
@@ -266,13 +105,7 @@ text_eda_content = """<!DOCTYPE html>
 
     <footer class="eda-footer">
       <span>CO5177 · Programming Foundation for Data Analytics and Visualization</span>
-      <a href="index.html#data-tracks">Return to landing page</a>
+      <span>Tác giả: Nguyễn Thị Hồng Hạnh</span>
     </footer>
   </body>
 </html>
-"""
-
-with open('text-eda.html', 'w', encoding='utf-8') as f:
-    f.write(text_eda_content)
-
-print("Updated text-eda.html successfully.")
